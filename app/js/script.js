@@ -3,18 +3,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     (function () {
         const inputData = document.querySelector('.converter__input');
-        inputData.value = `
-origin/ARE-1255
-origin/ARE-1276
-origin/ARE-1348
-origin/ARE-941
-origin/HEAD -> origin/main
-origin/WOR-189
-origin/WOR-317
-origin/WOR-367
-origin/WOR-391
-origin/main`;
-
         const outputData = document.querySelector('.converter__output');
         const btn = document.querySelector('.converter__button');
 
@@ -25,7 +13,7 @@ origin/main`;
             // Используем регулярное выражение для фильтрации нужных строк и извлечения ключей
             const keys = lines
                 .map(line => line.trim()) // Удаляем пробелы в начале и конце строки
-                .filter(line => /origin\/(ARE|WOR)-\d+/.test(line)) // Оставляем только нужные строки
+                .filter(line => /origin\/[A-Z]+-\d+/.test(line)) // Оставляем только нужные строки
                 .map(line => line.split('/')[1]); // Извлекаем ключ
 
             // Формируем итоговую строку
