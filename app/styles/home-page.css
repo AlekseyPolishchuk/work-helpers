@@ -7511,14 +7511,44 @@ body {
 .converter__output {
   color: #00b3eb;
 }
-.converter__button {
+.converter__controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  gap: 30px;
+}
+.converter__button, .converter__copy {
   width: 100px;
   height: 90px;
   border: none;
   border-radius: 10px;
   background: -o-linear-gradient(89deg, #ff8d00, #5b3200);
   background: linear-gradient(1deg, #ff8d00, #5b3200);
-  border: 1px solid #ff8d00;
   font-size: 18px;
   font-weight: 700;
+}
+.converter__button:hover, .converter__copy:hover {
+  -webkit-box-shadow: 0 6px 10px 0 #161616;
+          box-shadow: 0 6px 10px 0 #161616;
+}
+.converter__button {
+  background: -o-linear-gradient(89deg, #ff8d00, #5b3200);
+  background: linear-gradient(1deg, #ff8d00, #5b3200);
+  border: 1px solid #ff8d00;
+}
+.converter__copy {
+  background: -o-linear-gradient(89deg, #393cf8, #1f1d94);
+  background: linear-gradient(1deg, #393cf8, #1f1d94);
+  border: 1px solid #393cf8;
+}
+.converter__copy.copied {
+  background: -o-linear-gradient(89deg, #00c900, #006300);
+  background: linear-gradient(1deg, #00c900, #006300);
+  border: 1px solid #00c900;
 }

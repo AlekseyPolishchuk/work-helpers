@@ -42,14 +42,40 @@ body {
         color: #00b3eb;
     }
 
-    &__button {
+    &__controls {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        gap: 30px;
+    }
+
+    &__button,
+    &__copy {
         width: 100px;
         height: 90px;
         border: none;
         border-radius: 10px;
         background: linear-gradient(1deg, #ff8d00, #5b3200);
-        border: 1px solid #ff8d00;
         font-size: 18px;
         font-weight: 700;
+
+        &:hover {
+            box-shadow: 0 6px 10px 0 #161616;
+        }
+    }
+
+    &__button {
+        background: linear-gradient(1deg, #ff8d00, #5b3200);
+        border: 1px solid #ff8d00;
+    }
+
+    &__copy {
+        background: linear-gradient(1deg, #393cf8, #1f1d94);
+        border: 1px solid #393cf8;
+
+        &.copied {
+            background: linear-gradient(1deg, #00c900, #006300);
+            border: 1px solid #00c900;
+        }
     }
 }
