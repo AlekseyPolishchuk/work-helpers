@@ -1,0 +1,29 @@
+@import './../index';
+
+body {
+    background-color: #575b6d;
+}
+
+.converter {
+    &__container {
+        height: 100vh;
+        display: flex;
+        column-gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__field {
+        padding: 20px;
+        width: 400px;
+        height: 300px;
+        border-radius: 10px;
+    }
+
+    &__button {
+        width: 100px;
+        height: 50px;
+        border: none;
+        background: rgb(255, 167, 53);
+    }
+}

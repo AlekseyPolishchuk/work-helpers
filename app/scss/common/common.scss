@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: $main-font;
+    font-size: $main-font-size;
+    color: $text-color1;
+
+    a {
+        text-decoration: none;
+    }
+}
+.mb-6 {
+    margin-bottom: 4rem !important;
+}
+.mb-7 {
+    margin-bottom: 5rem !important;
+}
+.mb-8 {
+    margin-bottom: 6rem !important;
+}
+.mb-9 {
+    margin-bottom: 7rem !important;
+}
+.mb-10 {
+    margin-bottom: 8rem !important;
+}

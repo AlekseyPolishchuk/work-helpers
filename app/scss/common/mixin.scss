@@ -1,0 +1,122 @@
+@mixin sections-paddings($top, $bottom) {
+    padding-top: $top;
+    padding-bottom: $bottom;
+}
+
+@mixin title-light {
+    color: $text-light;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+@mixin title-dark {
+    color: $text-color2;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+@mixin subtitle-light {
+    font-size: $sub-title;
+    color: $text-light;
+    text-align: center;
+}
+
+@mixin subtitle-dark {
+    font-size: $sub-title;
+    color: $text-color2;
+    text-align: center;
+}
+
+@mixin input($source) {
+    position: relative;
+    &:before {
+        content: '';
+        display: inline-block;
+        width: 13px;
+        height: 14px;
+        background-image: url($source);
+        background-size: cover;
+        position: absolute;
+        top: 50%;
+        left: 22px;
+        transform: translate(-50%, -50%);
+    }
+    input {
+        width: 285px;
+        height: 50px;
+        border-radius: 2px;
+        margin-right: 10px;
+        padding: 15px 0 15px 45px;
+        outline: none;
+    }
+}
+
+@mixin button {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-color: $button-color;
+    color: #ffffff;
+    text-transform: uppercase;
+    transition-duration: 0.2s;
+    &:hover {
+        background-color: #ffffff;
+        color: $text-color1;
+        border: 1px solid $text-color1;
+    }
+}
+
+@mixin services-item($source) {
+    position: relative;
+    &:before {
+        content: '';
+        display: inline-block;
+        background-image: url($source);
+        background-size: cover;
+        position: absolute;
+        left: 0;
+    }
+}
+
+@mixin price-font($source) {
+    position: relative;
+    font-size: $text-price;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1;
+    &:before {
+        content: '';
+        display: inline-block;
+        background-image: url($source);
+        background-size: cover;
+        position: absolute;
+        width: 18px;
+        height: 33px;
+        left: -20px;
+        top: 7px;
+    }
+}
+
+@mixin process-img($source, $source_2, $width, $height, $top, $left) {
+    background-image: url($source);
+    background-size: cover;
+    &:after {
+        content: '';
+        position: absolute;
+        background-image: url($source_2);
+        width: $width;
+        height: $height;
+        top: $top;
+        left: $left;
+    }
+}
+
+@mixin social($source, $w, $h) {
+    background-image: url($source);
+    width: $w;
+    height: $h;
+}
