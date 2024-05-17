@@ -21,7 +21,7 @@ origin/main`;
         function formatKeys(inputText) {
             // Разделяем входной текст на строки
             const lines = inputText.split('\n');
-            console.log(lines);
+
             // Используем регулярное выражение для фильтрации нужных строк и извлечения ключей
             const keys = lines
                 .map(line => line.trim()) // Удаляем пробелы в начале и конце строки
