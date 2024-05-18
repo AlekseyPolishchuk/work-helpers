@@ -2,33 +2,37 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Handle Data</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./app/styles/home-page.min.css">
+   <meta charset="UTF-8">
+   <title>Handle Data</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="./app/styles/home-page.min.css">
 </head>
 
 <body>
 
-  <div class="main">
-    <div class="converter">
-      <div class="container converter__container">
+   <div class="main">
+      <div class="converter">
+         <div class="container converter__container">
 
+            <textarea class="converter__field converter__input"
+               placeholder="origin/HEAD -> origin/main&#10;origin/main..."></textarea>
 
-        <textarea class="converter__field converter__input" name="in"
-          placeholder="origin/HEAD -> origin/main&#10;origin/main..."></textarea>
-        <div class="converter__controls">
-          <button class="converter__button">Handle</button>
-          <button class="converter__copy">Copy to Clipboard</button>
-        </div>
+            <div class="converter__controls">
+               <button class="converter__button">Handle</button>
+               <button class="converter__copy">Copy to Clipboard</button>
+               <button class="converter__clear">Clear</button>
+            </div>
 
-        <textarea class="converter__field converter__output" name="out"></textarea>
+            <textarea class="converter__field converter__output"></textarea>
+
+            <div class="converter__field converter__list"></div>
+
+         </div>
       </div>
-    </div>
 
-  </div>
+   </div>
 
-  <script src="./app/js/script.js"></script>
+   <script src="./app/js/script.js"></script>
 </body>
 
 </html>
