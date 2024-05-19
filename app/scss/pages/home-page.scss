@@ -191,6 +191,10 @@ body {
         display: grid;
         grid-template-rows: 1fr 1fr;
         row-gap: 15px;
+
+        .converter__field {
+            padding: 10px;
+        }
     }
 
     .remote-branch,

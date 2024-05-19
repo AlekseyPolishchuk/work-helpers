@@ -7674,6 +7674,9 @@ body {
   grid-template-rows: 1fr 1fr;
   row-gap: 15px;
 }
+.converter__comands .converter__field {
+  padding: 10px;
+}
 .converter .remote-branch,
 .converter .local-branch {
   color: #42464d;

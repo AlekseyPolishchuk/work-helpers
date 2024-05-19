@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateOutputData(inputText) {
-            const formattedText = formatKeys(inputText);
-            outputData.value = formattedText;
+            outputData.value = `(${formatKeys(inputText)}) AND status = Closed`;
 
             navigator.clipboard
                 .writeText(outputData.value)
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateOutputData(inputText);
 
             const formattedText = formatKeys(inputText);
-            outputData.value = formattedText;
+            // outputData.value = formattedText;
 
             const keys = formattedText.split(' OR ').map(item => item.split(' = ')[1]);
             generateCheckboxList(keys);
