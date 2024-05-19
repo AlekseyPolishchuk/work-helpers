@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>Handle Data</title>
+   <title>Git Cleanup</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="./app/styles/home-page.min.css">
 </head>
@@ -18,14 +18,29 @@
                placeholder="origin/HEAD -> origin/main&#10;origin/main..."></textarea>
 
             <div class="converter__controls">
-               <button class="converter__button">Handle</button>
-               <button class="converter__copy">Copy to Clipboard</button>
+               <button class="converter__button">Add</button>
                <button class="converter__clear">Clear</button>
+               <button class="converter__generate">Generate Commands</button>
             </div>
 
             <textarea class="converter__field converter__output"></textarea>
 
             <div class="converter__field converter__list"></div>
+
+            <div class="converter__info">
+               <div class="converter__label">Del<br><span>Remote</span> branches</div>
+               <span>(click to copy)</span>
+               <div class="converter__label">Del<br><span>Local</span> branches</div>
+            </div>
+
+            <div class="converter__comands">
+               <div class="field-wrap">
+                  <pre class="converter__field remote-branch"></pre>
+               </div>
+               <div class="field-wrap">
+                  <pre class="converter__field local-branch"></pre>
+               </div>
+            </div>
 
          </div>
       </div>

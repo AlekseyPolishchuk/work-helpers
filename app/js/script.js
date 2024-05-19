@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputData = document.querySelector('.converter__input');
         const outputData = document.querySelector('.converter__output');
         const btn = document.querySelector('.converter__button');
-        const copyBtn = document.querySelector('.converter__copy');
+        const genCommandsBtn = document.querySelector('.converter__generate');
         const clearBtn = document.querySelector('.converter__clear');
         const list = document.querySelector('.converter__list');
+        const remoteBranch = document.querySelector('.remote-branch');
+        const localBranch = document.querySelector('.local-branch');
 
         function formatKeys(inputText) {
             const lines = inputText.split('\n');
@@ -50,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard
                 .writeText(outputData.value)
                 .then(() => {
-                    copyBtn.classList.add('copied');
-                    copyBtn.textContent = 'Copied';
+                    // copyBtn.classList.add('copied');
+                    // copyBtn.textContent = 'Copied';
                 })
                 .catch(err => {
                     console.error('Failed to copy text: ', err);
@@ -65,8 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (inputText.trim() === '') {
                 outputData.value = '';
                 list.innerHTML = '';
-                copyBtn.classList.remove('copied');
-                copyBtn.textContent = 'Copy to Clipboard';
                 return;
             }
 
@@ -80,8 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 outputData.classList.add('error');
                 outputData.value = 'Input data does not match the required format...';
                 list.innerHTML = '';
-                copyBtn.classList.remove('copied');
-                copyBtn.textContent = 'Copy to Clipboard';
                 return;
             }
 
@@ -94,13 +92,51 @@ document.addEventListener('DOMContentLoaded', () => {
             generateCheckboxList(keys);
         }
 
+        function copyToClipboard(elem) {
+            elem.addEventListener('click', () => {
+                navigator.clipboard
+                    .writeText(elem.textContent)
+                    .then(() => {
+                        showMessage(elem, 'Copied to clipboard');
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+            });
+        }
+
+        function showMessage(field, text) {
+            if (!field.closest('.field-wrap').querySelector('.converter__message')) {
+                const message = document.createElement('div');
+                message.textContent = text;
+                message.classList.add('converter__message');
+
+                field.closest('.field-wrap').insertAdjacentElement('beforeend', message);
+                setTimeout(() => message.remove(), 2000);
+            }
+        }
+
         inputData.addEventListener('input', updateOutputAndList);
         inputData.addEventListener('focus', () => {
+            if (inputData.value.trim() === '') {
+                navigator.clipboard
+                    .readText()
+                    .then(text => {
+                        inputData.value = text;
+                        updateOutputAndList();
+                    })
+                    .catch(err => {
+                        console.error('Failed to read from clipboard: ', err);
+                    });
+            }
+        });
+
+        btn.addEventListener('click', () => {
             navigator.clipboard
                 .readText()
                 .then(text => {
                     inputData.value = text;
-                    updateOutputAndList(); // Вызовите функцию для обновления данных и списка чекбоксов
+                    updateOutputAndList();
                 })
                 .catch(err => {
                     console.error('Failed to read from clipboard: ', err);
@@ -111,8 +147,31 @@ document.addEventListener('DOMContentLoaded', () => {
             inputData.value = '';
             outputData.value = '';
             list.innerHTML = '';
-            copyBtn.classList.remove('copied');
-            copyBtn.textContent = 'Copy to Clipboard';
+            remoteBranch.innerHTML = '';
+            localBranch.innerHTML = '';
+            remoteBranch.classList.remove('copied');
+            localBranch.classList.remove('copied');
         });
+
+        genCommandsBtn.addEventListener('click', function () {
+            const selectedBranches = Array.from(list.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+
+            if (selectedBranches.length === 0) {
+                remoteBranch.innerHTML = '';
+                localBranch.innerHTML = '';
+                return;
+            }
+
+            const branchesText = selectedBranches.join(' ');
+
+            const remoteScript = `for branch in ${branchesText}; do\n  git push origin :$branch\n  echo "================================================="\ndone\n`;
+            const localScript = `for branch in ${branchesText}; do\n  git branch -d $branch\n  echo "================================================="\ndone\n`;
+
+            remoteBranch.innerHTML = remoteScript;
+            localBranch.innerHTML = localScript;
+        });
+
+        copyToClipboard(remoteBranch);
+        copyToClipboard(localBranch);
     })();
 });
