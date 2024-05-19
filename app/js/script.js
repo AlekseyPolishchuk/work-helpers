@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearBtn.addEventListener('click', () => {
             inputData.value = '';
             outputData.value = '';
+            outputData.classList.remove('error');
             list.innerHTML = '';
             remoteBranch.innerHTML = '';
             localBranch.innerHTML = '';
