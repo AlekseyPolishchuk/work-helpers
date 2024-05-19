@@ -67,6 +67,7 @@ body {
     &__output {
         grid-area: output;
         color: #4fa3bd;
+        font-family: monospace;
 
         &.error {
             color: red;

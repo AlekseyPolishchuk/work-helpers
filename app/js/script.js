@@ -12,16 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const localBranch = document.querySelector('.local-branch');
 
         function formatKeys(inputText) {
-            const lines = inputText.split('\n');
+            const keys = inputText
+                .split('\n')
+                .map(line => line.trim().replace(/^\*/, ''))
+                .filter(line => /^origin\/[A-Z]+-\d+|^[A-Z]+-\d+/i.test(line))
+                .map(line => line.replace(/^origin\//, ''));
 
-            const keys = lines
-                .map(line => line.trim())
-                .filter(line => /origin\/[A-Z]+-\d+/.test(line))
-                .map(line => line.split('/')[1]);
-
-            const result = keys.map(key => `key = ${key}`).join(' OR ');
-
-            return result;
+            return keys.map(key => `key = ${key}`).join(' OR ');
         }
 
         function generateCheckboxList(keys) {
@@ -45,15 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        function updateOutputData(inputText) {
+        function updateOutputField(inputText) {
             outputData.value = `(${formatKeys(inputText)}) AND status = Closed ORDER BY key`;
 
             navigator.clipboard
                 .writeText(outputData.value)
-                .then(() => {
-                    // copyBtn.classList.add('copied');
-                    // copyBtn.textContent = 'Copied';
-                })
+                .then()
                 .catch(err => {
                     console.error('Failed to copy text: ', err);
                 });
@@ -69,22 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const inputKeys = inputText
-                .split('\n')
-                .map(line => line.trim())
-                .filter(line => /origin\/[A-Z]+-\d+/.test(line))
-                .map(line => line.split('/')[1]);
+            const formattedText = formatKeys(inputText);
 
-            if (inputKeys.length === 0) {
+            if (formattedText.trim() === '') {
                 outputData.classList.add('error');
                 outputData.value = 'Input data does not match the required format...';
                 list.innerHTML = '';
                 return;
             }
 
-            updateOutputData(inputText);
-
-            const formattedText = formatKeys(inputText);
+            updateOutputField(inputText);
 
             const keys = formattedText
                 .split(' OR ')

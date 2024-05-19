@@ -7536,6 +7536,7 @@ body {
 .converter__output {
   grid-area: output;
   color: #4fa3bd;
+  font-family: monospace;
 }
 .converter__output.error {
   color: red;
