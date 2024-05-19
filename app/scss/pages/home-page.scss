@@ -33,6 +33,7 @@ body {
 
         &::-webkit-resizer {
             display: none;
+            background: #1a1e22;
         }
 
         &:focus {
@@ -140,12 +141,15 @@ body {
 
     &__list {
         grid-area: list;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: max-content;
-        row-gap: 5px;
 
-        color: chocolate;
+        display: grid;
+        row-gap: 5px;
+        grid-auto-flow: column;
+        grid-auto-rows: auto;
+        grid-template-rows: repeat(8, max-content);
+        grid-template-columns: repeat(3, 1fr);
+
+        color: #d2691e;
         font-family: monospace;
         font-size: 18px;
     }

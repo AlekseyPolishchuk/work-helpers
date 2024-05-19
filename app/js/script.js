@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateOutputData(inputText) {
-            outputData.value = `(${formatKeys(inputText)}) AND status = Closed`;
+            outputData.value = `(${formatKeys(inputText)}) AND status = Closed ORDER BY key`;
 
             navigator.clipboard
                 .writeText(outputData.value)
@@ -85,9 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
             updateOutputData(inputText);
 
             const formattedText = formatKeys(inputText);
-            // outputData.value = formattedText;
 
-            const keys = formattedText.split(' OR ').map(item => item.split(' = ')[1]);
+            const keys = formattedText
+                .split(' OR ')
+                .map(item => item.split(' = ')[1])
+                .sort();
             generateCheckboxList(keys);
         }
 

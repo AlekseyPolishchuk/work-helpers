@@ -7496,6 +7496,7 @@ body {
 }
 .converter__field::-webkit-resizer {
   display: none;
+  background: #1a1e22;
 }
 .converter__field:focus {
   outline: 1px solid #53637a;
@@ -7623,11 +7624,13 @@ body {
 .converter__list {
   grid-area: list;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: -webkit-max-content;
-  grid-auto-rows: max-content;
   row-gap: 5px;
-  color: chocolate;
+  grid-auto-flow: column;
+  grid-auto-rows: auto;
+  grid-template-rows: repeat(8, -webkit-max-content);
+  grid-template-rows: repeat(8, max-content);
+  grid-template-columns: repeat(3, 1fr);
+  color: #d2691e;
   font-family: monospace;
   font-size: 18px;
 }
