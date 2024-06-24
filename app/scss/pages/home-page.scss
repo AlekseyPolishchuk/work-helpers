@@ -260,13 +260,12 @@ body {
         top: 0;
         right: 100px;
 
-        font-family: cursive;
         color: #fff;
 
         background-color: #000000;
         border-radius: 0 0 14px 14px;
         opacity: 0.7;
-        transform: translateY(-87%);
+        transform: translateY(-88%);
         transition: transform 0.6s;
 
         &--active {
@@ -276,11 +275,16 @@ body {
         &__label {
             margin-top: 15px;
             padding-top: 9px;
-            font-size: 20px;
             color: #457fa9;
             text-align: center;
+            text-transform: uppercase;
             border-top: 1px dashed #457fa9;
             cursor: pointer;
+            transition: color 0.3s;
+
+            &:hover {
+                color: #5cbaff;
+            }
         }
 
         &__reset {
@@ -288,11 +292,15 @@ body {
             top: 5px;
             right: 12px;
             color: #457fa9;
-            font-family: monospace;
             text-transform: uppercase;
             cursor: pointer;
             background-color: transparent;
             border: none;
+            transition: color 0.3s;
+
+            &:hover {
+                color: #5cbaff;
+            }
         }
 
         input,
@@ -310,6 +318,11 @@ body {
             align-items: center;
             position: relative;
             color: #9b9b9b;
+            transition: color 0.3s;
+
+            &:hover {
+                color: #fff;
+            }
 
             &::before {
                 content: '';
