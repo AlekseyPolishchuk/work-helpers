@@ -7729,3 +7729,96 @@ body {
 .converter__label span {
   color: #457fa9;
 }
+.converter .checklist {
+  padding: 35px 25px 15px 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 100px;
+  font-family: cursive;
+  color: #fff;
+  background-color: #000000;
+  border-radius: 0 0 14px 14px;
+  opacity: 0.7;
+  -webkit-transform: translateY(-87%);
+      -ms-transform: translateY(-87%);
+          transform: translateY(-87%);
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: -webkit-transform 0.6s;
+  -o-transition: transform 0.6s;
+  transition: transform 0.6s;
+  transition: transform 0.6s, -webkit-transform 0.6s;
+}
+.converter .checklist--active {
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+.converter .checklist__label {
+  margin-top: 15px;
+  padding-top: 9px;
+  font-size: 20px;
+  color: #457fa9;
+  text-align: center;
+  border-top: 1px dashed #457fa9;
+  cursor: pointer;
+}
+.converter .checklist__reset {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  color: #457fa9;
+  font-family: monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.converter .checklist input,
+.converter .checklist label {
+  cursor: pointer;
+}
+.converter .checklist input {
+  width: 0;
+  height: 0;
+}
+.converter .checklist label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  color: #9b9b9b;
+}
+.converter .checklist label::before {
+  content: "";
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #42464d;
+}
+.converter .checklist input:checked + label span {
+  text-decoration: line-through;
+}
+.converter .checklist input:checked + label::before {
+  content: "✓";
+  border-color: #00330b;
+  color: chartreuse;
+}
