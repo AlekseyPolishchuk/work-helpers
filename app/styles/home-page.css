@@ -7831,6 +7831,7 @@ body {
   border: 2px solid #42464d;
 }
 .converter .checklist input:checked + label span {
+  color: #3f3f3f;
   text-decoration: line-through;
 }
 .converter .checklist input:checked + label::before {
