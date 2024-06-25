@@ -327,6 +327,7 @@ body {
         }
 
         input:checked + label span {
+            color: #3f3f3f;
             text-decoration: line-through;
         }
 
